@@ -1,4 +1,13 @@
-"use strict";
+const btnExecute = document.querySelector(".execute");
+const targetInput = document.querySelector(".target");
+const realPixel = document.querySelector(".real-pixel");
+const filterPixel = document.querySelector(".filter-pixel");
+const filterDetail = document.querySelector(".filter-detail");
+const lossDetail = document.querySelector(".loss-detail");
+const filterDiv = document.querySelector(".filter-div");
+const btnCopy = document.querySelector(".copy");
+const toast = document.querySelector(".toast");
+
 class Color {
   constructor(r, g, b) {
     this.set(r, g, b);
@@ -294,9 +303,11 @@ function hexToRgb(hex) {
     : null;
 }
 
-$(document).ready(() => {
-  $("button.execute").click(() => {
-    const rgb = hexToRgb($("input.target").val());
+document.addEventListener("DOMContentLoaded", function () {
+  // Convert the hex to filter
+  btnExecute.addEventListener("click", function (e) {
+    e.preventDefault();
+    const rgb = hexToRgb(targetInput.value);
     if (rgb.length !== 3) {
       alert("Invalid format!");
       return;
@@ -309,17 +320,31 @@ $(document).ready(() => {
     let lossMsg;
     if (result.loss < 1) {
       lossMsg = "This is a perfect result.";
+      lossDetail.style.color = "#008000";
     } else if (result.loss < 5) {
       lossMsg = "The is close enough.";
-    } else if (result.loss < 15) {
-      lossMsg = "The color is somewhat off. Consider running it again.";
+      lossDetail.style.color = "#FFA500";
     } else {
-      lossMsg = "The color is extremely off. Run it again!";
+      lossMsg = "The color is off. Run it again!";
+      lossDetail.style.color = "#FF0000";
     }
 
-    $(".realPixel").css("background-color", color.toString());
-    $(".filterPixel").attr("style", result.filter);
-    $(".filterDetail").text(result.filter);
-    $(".lossDetail").html(`Loss: ${result.loss.toFixed(1)}. <b>${lossMsg}</b>`);
+    realPixel.style.backgroundColor = color.toString();
+    filterPixel.setAttribute("style", result.filter);
+    filterDiv.style.visibility = "visible";
+    filterDetail.textContent = result.filter;
+    lossDetail.innerHTML = `Loss: ${result.loss.toFixed(1)} <br>${lossMsg}</br>`;
+  });
+
+  // Copy the filter to clipboard
+  btnCopy.addEventListener("click", async function () {
+    try {
+      await navigator.clipboard.writeText(filterDetail.textContent);
+    } catch (err) {
+      console.error("something went wrong", err);
+    }
+    toast.style.visibility = "visible";
+    toast.innerText = "copied!";
+    setTimeout(() => toast.remove(), 2000);
   });
 });

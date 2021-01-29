@@ -1,10 +1,172 @@
-.pixel {
-  display: inline-block;
-  background-color: #000;
-  width: 50px;
-  height: 50px;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Source+Code+Pro&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  outline: none;
 }
 
-.filterDetail {
-  font-family: "Consolas", "Menlo", "Ubuntu Mono", monospace;
+:root {
+  --primary-color: #fffffe;
+  --secondary-color: #d8eefe;
+  --tertiary-color: #0086d6;
+  --text-color: #094067;
+}
+
+body {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+  font-family: "Poppins";
+  text-align: center;
+  letter-spacing: 0.06rem;
+}
+
+nav {
+  height: 4.8rem;
+  background-color: #90b4ce;
+  text-align: center;
+}
+
+h1 {
+  display: inline-block;
+  margin: 1rem auto;
+  font-size: 2rem;
+}
+
+main {
+  display: block;
+  margin: 2rem auto;
+  width: 35rem;
+  height: 85vh;
+  border-radius: 0.2rem;
+  box-shadow: 0 0.313rem 1.563rem 0 rgba(0, 0, 0, 0.25);
+}
+
+.execute {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  background-color: #3da9fc;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.06rem;
+  padding: 1rem 1.4rem;
+  margin: 1rem auto;
+  margin-top: 0.5rem;
+  border-radius: 0.3rem;
+  box-shadow: 0 0.34rem var(--tertiary-color);
+}
+
+.execute:hover {
+  box-shadow: 0 0.2rem var(--tertiary-color);
+  top: 0.16rem;
+}
+
+.execute:active {
+  box-shadow: none;
+  top: 0.34rem;
+}
+
+.target {
+  width: 14rem;
+  height: 2.4rem;
+  padding: 0.2rem;
+  margin: 1rem auto;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  transition: all 0.2s ease 0s;
+  border-radius: 0.2rem;
+  border: 0.06rem solid;
+}
+
+.target:focus {
+  background-color: var(--secondary-color);
+}
+
+label {
+  font-size: 1.2rem;
+  margin: 0 1rem;
+}
+
+.pixel {
+  margin-left: 1rem;
+  display: inline-block;
+  background-color: #000;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0.2rem;
+}
+
+.color-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.color-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.filter-detail {
+  font-family: "Source Code Pro", monospace;
+  font-size: 1.2rem;
+  text-align: left;
+  padding: 0.6rem;
+}
+
+.filter-div {
+  background-color: #fafbe7;
+  display: inline-block;
+  margin: 1rem auto;
+  width: 28rem;
+  visibility: hidden;
+  border: 0.06rem solid #bebebd;
+  border-radius: 0.2rem;
+}
+
+.icon-copy {
+  cursor: pointer;
+  float: right;
+  margin-right: 0.4rem;
+  margin-top: 0.4rem;
+  filter: invert(61%) sepia(50%) saturate(3077%) hue-rotate(181deg) brightness(101%) contrast(98%);
+}
+
+.loss-detail {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.toast {
+  visibility: hidden;
+  position: fixed;
+  bottom: 0.625rem;
+  right: 0.625rem;
+  background-color: #fafbe7;
+  border-radius: 0.2rem;
+  padding: 1rem 2rem;
+  margin: 0.5rem;
+  box-shadow: 0 0.313rem 1.563rem 0 rgba(0, 0, 0, 0.25);
+}
+
+footer {
+  background-color: #90b4ce;
+  text-align: center;
+  padding: 1rem;
+}
+
+footer a {
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--text-color);
 }
