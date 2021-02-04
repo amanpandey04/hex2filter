@@ -33,6 +33,7 @@ h1 {
 main {
   display: inline-block;
   margin: 2rem auto;
+  margin-top: 0;
   width: 38rem;
   aspect-ratio: 1/1;
   border-radius: 0.2rem;
