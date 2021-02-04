@@ -345,6 +345,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     toast.style.visibility = "visible";
     toast.innerText = "copied!";
-    setTimeout(() => toast.remove(), 2000);
+    setTimeout(function () {
+      toast.style.visibility = "hidden";
+    }, 2000);
   });
 });
