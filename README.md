@@ -1,2 +1,2 @@
 # hex2filter
- an app to convert hex color code to fliter
+An app to convert hex colour codes to CSS filter.
